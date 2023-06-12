@@ -1,5 +1,7 @@
 from sshtunnel import SSHTunnelForwarder
 from sqlalchemy import create_engine
+import pymysql
+import pandas as pd
 
 # https://gist.github.com/riddhi89/9d53140dec7c17e63e22a0b5ab43f99f
 # https://www.linkedin.com/pulse/programmatically-access-private-rds-database-aws-from-tom-reid/
@@ -14,18 +16,19 @@ with SSHTunnelForwarder(
 ) as tunnel:
     print("****SSH Tunnel Established****")
 
-    host = '127.0.0.1'
-    user = 'admin'
-    password = 'suite203'
-    database = 'javeddb'
-
-    connection_string = 'mysql+mysqlconnector://' + user + password + host + database
+    db = pymysql.connect(
+        host='127.0.0.1', user='admin',
+        password='suite203', port=tunnel.local_bind_port
+    )
 
     try:
-        # GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
-        engine = create_engine(connection_string)
-        print(
-            f"Connection to the {host} for user {user} created successfully.")
-    except Exception as ex:
-        print("Connection could not be made due to the following error: \n", ex)
+        # Print all the databases
+        with db.cursor() as cur:
+            sql = "LOAD DATA LOCAL INFILE \'names.csv\' \
+            INTO TABLE javeddb.names FIELDS TERMINATED BY \',\' ENCLOSED BY \'\"\' \
+            LINES TERMINATED BY '\r\n'"
 
+            cur.execute(sql)
+            db.commit()
+    finally:
+        db.close()

@@ -24,7 +24,7 @@ with SSHTunnelForwarder(
         # Print all the databases
         with db.cursor() as cur:
             sql = 'insert into javeddb.Persons (PersonID, LastName, FirstName, Address, City) VALUES (%s, %s, %s, %s, %s)'
-            val = (7, "Siddiq", "Shahan", "5 loser st", "Akron")
+            val = (9, "Schroder", "Karen", "7 winnder st", "Atlanta")
             cur.execute(sql, val)
             db.commit()
     finally:

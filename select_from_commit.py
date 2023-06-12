@@ -23,10 +23,15 @@ with SSHTunnelForwarder(
     try:
         # Print all the databases
         with db.cursor() as cur:
-            sql = 'insert into javeddb.Persons (PersonID, LastName, FirstName, Address, City) VALUES (%s, %s, %s, %s, %s)'
-            val = (7, "Siddiq", "Shahan", "5 loser st", "Akron")
-            cur.execute(sql, val)
+            # cur.execute('select * from javeddb.yahoo_create')
+            cur.execute('select * from javeddb.Persons')
+            for r in cur:
+                print(r)
             db.commit()
+
+            # cur.execute('insert into javeddb.Persons (PersonID, LastName, FirstName, Address, City) '
+            #            'VALUES (2, "Song", "Jane", "5 hoe st", "Philadelphia"); ')
+
     finally:
         db.close()
 
