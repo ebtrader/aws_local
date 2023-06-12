@@ -7,3 +7,7 @@ https://www.geeksforgeeks.org/connecting-to-sql-database-using-sqlalchemy-in-pyt
 https://stackoverflow.com/questions/58232218/how-to-insert-a-pandas-dataframe-into-mysql-using-pymysql
 
 https://stackoverflow.com/questions/59993844/error-loading-local-data-is-disabled-this-must-be-enabled-on-both-the-client
+
+for create table
+1. take out quotes around db.table
+2. put ''' '''
