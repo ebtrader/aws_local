@@ -26,3 +26,7 @@ https://adamtheautomator.com/windows-subsystem-for-linux/#:~:text=Since%20most%2
 
 type wsl to access linux
 
+https://stackoverflow.com/questions/53474575/how-to-translate-the-wslpath-home-user-to-windows-path
+
+cd /mnt/c/Users/jsidd/Documents/SEAS
+
