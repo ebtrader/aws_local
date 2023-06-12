@@ -23,10 +23,11 @@ with SSHTunnelForwarder(
     try:
         # Print all the databases
         with db.cursor() as cur:
-            cur.execute('SHOW DATABASES')
-            for r in cur:
-                print(r)
+            sql = 'insert into javeddb.Persons (PersonID, LastName, FirstName, Address, City) VALUES (%s, %s, %s, %s, %s)'
+            val = (3, "Muder", "Johnny", "5 horny st", "Denver")
+            cur.execute(sql, val)
+            db.commit()
     finally:
         db.close()
 
-print("YAYY!!")
+
