@@ -1,5 +1,4 @@
 from sshtunnel import SSHTunnelForwarder
-import sqlalchemy
 import pymysql
 
 # https://gist.github.com/riddhi89/9d53140dec7c17e63e22a0b5ab43f99f
