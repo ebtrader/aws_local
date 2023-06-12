@@ -2,8 +2,8 @@ from sshtunnel import SSHTunnelForwarder
 import sqlalchemy
 import pymysql
 
-# Doing it the awswrangler/sqlalchemy way
-#
+# https://gist.github.com/riddhi89/9d53140dec7c17e63e22a0b5ab43f99f
+# https://www.linkedin.com/pulse/programmatically-access-private-rds-database-aws-from-tom-reid/
 
 with SSHTunnelForwarder(
 
