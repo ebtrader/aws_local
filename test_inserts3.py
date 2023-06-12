@@ -23,20 +23,10 @@ with SSHTunnelForwarder(
     try:
         # Print all the databases
         with db.cursor() as cur:
-            # cur.execute('select * from javeddb.yahoo_create')
-            cur.execute('''CREATE TABLE javeddb.tqqq_raw_temp (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `ticker` varchar(10) DEFAULT NULL,
-  `strike` int DEFAULT NULL,
-  `expiration` datetime DEFAULT NULL,
-  `time_created` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci''')
+            sql = 'insert into javeddb.tqqq_raw_temp (ticker, strike, expiration) VALUES (%s, %s, %s)'
+            val = ("TQQQ", 35, '2022-06-10')
+            cur.execute(sql, val)
             db.commit()
-
-            # cur.execute('insert into javeddb.Persons (PersonID, LastName, FirstName, Address, City) '
-            #            'VALUES (2, "Song", "Jane", "5 hoe st", "Philadelphia"); ')
-
     finally:
         db.close()
 
