@@ -11,3 +11,18 @@ https://stackoverflow.com/questions/59993844/error-loading-local-data-is-disable
 for create table
 1. take out quotes around db.table
 2. put ''' '''
+
+https://dev.to/shuaib/setting-up-cron-jobs-to-run-bash-scripts-n5n
+
+https://askubuntu.com/questions/363793/bash-script-to-move-files
+
+https://askubuntu.com/questions/925621/how-to-add-a-bash-script-to-a-cron-job
+
+run a bash script for local to ec2:
+
+https://dearsikandarkhan.medium.com/files-copying-between-aws-ec2-and-local-d07ed205eefa
+
+https://adamtheautomator.com/windows-subsystem-for-linux/#:~:text=Since%20most%20WSL%20Linux%20distributions,your%20Windows%20store%20apps%20go.
+
+type wsl to access linux
+
