@@ -24,16 +24,20 @@ with SSHTunnelForwarder(
         # Print all the databases
         with db.cursor() as cur:
             # cur.execute('select * from javeddb.yahoo_create')
-            cur.execute('''CREATE TABLE javeddb.sunshine (
+            cur.execute('''CREATE TABLE javeddb.tqqq_bid_ask (
   `id` int NOT NULL AUTO_INCREMENT,
-  `PersonID` varchar(50) DEFAULT NULL,
-  `LastName` varchar(50) DEFAULT NULL,
-  `FirstName` varchar(50) DEFAULT NULL,
-  `Address` varchar(50) DEFAULT NULL,
-  `City` varchar(50) DEFAULT NULL,
+  `datetime` datetime DEFAULT NULL,
+  `open` float DEFAULT NULL,
+  `high` float DEFAULT NULL,
+  `low` float DEFAULT NULL,
+  `close` float DEFAULT NULL,
+  `ticker` varchar(10) DEFAULT NULL,
+  `strike` int DEFAULT NULL,
+  `expiration` datetime DEFAULT NULL,
+  `code` varchar(4) DEFAULT NULL,
   `time_created` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci''')
+) ENGINE=InnoDB AUTO_INCREMENT=72152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci''')
             db.commit()
 
     finally:

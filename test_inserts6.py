@@ -1,5 +1,6 @@
 from sshtunnel import SSHTunnelForwarder
 import pymysql
+import pandas as pd
 
 # https://gist.github.com/riddhi89/9d53140dec7c17e63e22a0b5ab43f99f
 # https://www.linkedin.com/pulse/programmatically-access-private-rds-database-aws-from-tom-reid/
@@ -20,22 +21,17 @@ with SSHTunnelForwarder(
     )
 
     # Run sample query in the database to validate connection
+    df = pd.read_csv('testdata.csv')
+    print(df)
+
     try:
         # Print all the databases
-        with db.cursor() as cur:
-            # cur.execute('select * from javeddb.yahoo_create')
-            cur.execute('''CREATE TABLE javeddb.sunshine (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `PersonID` varchar(50) DEFAULT NULL,
-  `LastName` varchar(50) DEFAULT NULL,
-  `FirstName` varchar(50) DEFAULT NULL,
-  `Address` varchar(50) DEFAULT NULL,
-  `City` varchar(50) DEFAULT NULL,
-  `time_created` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci''')
-            db.commit()
 
+        with db.cursor() as cur:
+            for i, row in df.iterrows():
+                sql = 'insert into javeddb.sunshine (PersonID, LastName, FirstName, Address, City) VALUES (%s, %s, %s, %s, %s)'
+                cur.execute(sql, tuple(row))
+                db.commit()
     finally:
         db.close()
 
