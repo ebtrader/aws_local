@@ -38,4 +38,4 @@ https://www.projectpro.io/recipes/connect-mysql-python-and-import-csv-file-into-
 
 https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket
 
-mysql -h database-2.c3dig9vjwrmk.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+mysql -h database-1.c3dig9vjwrmk.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
