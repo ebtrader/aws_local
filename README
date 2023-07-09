@@ -32,7 +32,7 @@ cd /mnt/c/Users/jsidd/Documents/SEAS
 
 jsiddique@DESKTOP-EUHGQGJ:/mnt/c/Users/jsidd/Documents/Maverick$ mv /mnt/c/Users/jsidd/Documents/test_files/this_test.txt /mnt/c/Users/jsidd/Documents/Maverick/this_test.txt
 
-
+scp -i test_key.pem /mnt/c/Users/jsidd/Documents/Maverick/this_test.txt ubuntu@ec2-44-202-61-2.compute-1.amazonaws.com:/home/ubuntu/this_test.txt
 
 https://www.youtube.com/watch?v=qnn8iVcXJxw
 
