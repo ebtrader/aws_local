@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 
 with SSHTunnelForwarder(
 
-        ('ec2-54-89-141-222.compute-1.amazonaws.com'),
+        ('ec2-54-226-23-54.compute-1.amazonaws.com'),
         ssh_username='ubuntu',
         ssh_pkey=r'C:\Users\jsidd\Documents\aws\test_key.pem',
         remote_bind_address=('database-1.c3dig9vjwrmk.us-east-1.rds.amazonaws.com', 3306)
@@ -25,6 +25,7 @@ with SSHTunnelForwarder(
     connection_string = 'mysql+mysqlconnector://' + username + ':' + pwd + '@' + hostname + ':' + str(port) + '/' + dbname
     engine = create_engine(connection_string)
 
-    df = pd.read_csv('testdata.csv')
+    filepath = r'C:\Users\jsidd\Documents\test_files\test_data\testdata.csv'
+    df = pd.read_csv(filepath)
     print(df)
     df.to_sql('cloudy', con=engine, if_exists='append', index=True)
